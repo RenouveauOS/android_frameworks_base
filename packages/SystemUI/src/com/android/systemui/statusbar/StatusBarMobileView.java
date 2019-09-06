@@ -166,7 +166,7 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
     private void initViewState() {
         updateMobileTypeView(StatusBar.USE_OLD_MOBILETYPE);
         setContentDescription(mState.contentDescription);
-        if (!mState.visible) {
+        if (!mState.visible || !mState.provisioned) {
             mMobileGroup.setVisibility(View.GONE);
         } else {
             mMobileGroup.setVisibility(View.VISIBLE);
@@ -196,10 +196,8 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
 
     private void updateState(MobileIconState state) {
         setContentDescription(state.contentDescription);
-        if (mState.visible != state.visible || mState.provisioned != state.provisioned) {
-            mMobileGroup.setVisibility(state.visible && state.provisioned
-                    ? View.VISIBLE : View.GONE);
-        }
+        mMobileGroup.setVisibility(state.visible && state.provisioned
+                ? View.VISIBLE : View.GONE);
         if (mState.strengthId != state.strengthId) {
             mMobileDrawable.setLevel(state.strengthId);
         }
@@ -287,17 +285,21 @@ public class StatusBarMobileView extends FrameLayout implements DarkReceiver,
         mVisibleState = state;
         switch (state) {
             case STATE_ICON:
-                mMobileGroup.setVisibility(View.VISIBLE);
-                mDotView.setVisibility(View.GONE);
-                break;
+                if (mState == null || (mState.visible && mState.provisioned)) {
+                    mMobileGroup.setVisibility(View.VISIBLE);
+                    mDotView.setVisibility(View.GONE);
+                    break;
+                }
             case STATE_DOT:
-                mMobileGroup.setVisibility(View.INVISIBLE);
-                mDotView.setVisibility(View.VISIBLE);
-                break;
+                if (mState == null || (mState.visible && mState.provisioned)) {
+                    mMobileGroup.setVisibility(View.INVISIBLE);
+                    mDotView.setVisibility(View.VISIBLE);
+                    break;
+                }
             case STATE_HIDDEN:
             default:
-                mMobileGroup.setVisibility(View.INVISIBLE);
-                mDotView.setVisibility(View.INVISIBLE);
+                mMobileGroup.setVisibility(View.GONE);
+                mDotView.setVisibility(View.GONE);
                 break;
         }
     }

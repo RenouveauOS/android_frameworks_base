@@ -18,7 +18,6 @@ package com.android.systemui.qs.tiles;
 
 import android.app.ActivityManager;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.provider.MediaStore;
 import android.service.quicksettings.Tile;
 import android.widget.Switch;
@@ -35,7 +34,7 @@ import com.android.systemui.statusbar.policy.FlashlightController;
 public class FlashlightTile extends QSTileImpl<BooleanState> implements
         FlashlightController.FlashlightListener {
 
-    private final Icon mIcon = ResourceIcon.get(R.drawable.ic_signal_flashlight);
+    private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_flashlight);
     private final FlashlightController mFlashlightController;
 
     public FlashlightTile(QSHost host) {
@@ -50,7 +49,9 @@ public class FlashlightTile extends QSTileImpl<BooleanState> implements
 
     @Override
     public BooleanState newTileState() {
-        return new BooleanState();
+        BooleanState state = new BooleanState();
+        state.handlesLongClick = false;
+        return state;
     }
 
     @Override

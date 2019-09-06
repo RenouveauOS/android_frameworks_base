@@ -14,17 +14,27 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+   <string name="permlab_fakePackageSignature">Ändra paketets signatur</string>
    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+   <string name="permdesc_fakePackageSignature">Tillåter appen att låtsas vara en annan app. Skadliga program skulle kunna använda detta för att komma åt privata data. Var försiktig med att dela ut detta tillstånd!</string>
    <!-- Button that copies the url to the log of a crashed application -->
+   <string name="aerr_copy">Kopiera URL för kraschlogg</string>
+   <string name="url_copy_success">URL har kopierats</string>
+   <string name="url_copy_failed">Ett fel inträffade vid uppladdning av loggen till dogbin</string>
    <!-- Ambient play -->
    <string name="ambient_recognition_notification">Spelas nu</string>
    <string name="ambient_recognition_information">%1$s av %2$s</string>
    <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+   <string name="permlab_toggleNavigationEditor">kontrollera navigationsfältredigeraren</string>
    <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+   <string name="permdesc_toggleNavigationEditor">Tillåter en applikation att ta kontroll över navigationsfältredigeraren.</string>
    <!-- Font service -->
    <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+   <string name="permlab_accessFontManager">Kom åt typsnittshanteraren</string>
    <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+   <string name="permdesc_accessFontManager">Ger en app tillgång till typsnittshanteraren.</string>
    <!-- [CHAR LIMIT=NONE] Error when a package is installed but got the missing fonts.xml file, notifying the user why it isn't showing up. -->
+   <string name="fontservice_incompatible_font">Typsnittspaketet som du har laddat ned är inte kompatibelt på grund av att fonts.xml saknas bland deras filer. Var god och kontakta apputvecklaren för hjälp.</string>
    <!-- advanced reboot to bootloader. -->
    <string name="reboot_to_bootloader_title">Starta om bootloader</string>
    <string name="reboot_to_bootloader_message">Startar om till bootloader\u2026</string>
@@ -57,6 +67,4 @@
    <string name="systemui_restart_message">För att alla ändringar ska träda i kraft, krävs en SystemUI omstart. Starta om SystemUI nu?</string>
    <!-- Pocket Lock -->
    <string name="pocket_lock_message_long_press">Håll strömknappen intryckt för att interagera</string>
-   <!-- Defines the sysfs attribute path used by pocket bridge
-        to communicate pocket state to the pocket judge kernel driver. -->
 </resources>
