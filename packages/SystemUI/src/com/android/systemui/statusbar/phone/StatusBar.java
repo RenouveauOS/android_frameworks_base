@@ -43,7 +43,7 @@ import android.database.ContentObserver;
 import android.os.Process;
 import com.android.systemui.ambient.play.AmbientIndicationManager;
 import com.android.systemui.ambient.play.AmbientIndicationManagerCallback;
-import com.android.systemui.ambient.play.RecognitionObserver.Observable;
+import com.android.internal.util.custom.ambient.play.AmbientPlayProvider.Observable;
 import com.android.systemui.ambient.play.AmbientIndicationContainer;
 
 import android.animation.Animator;
@@ -1172,6 +1172,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 R.id.ambient_indication_container);
         if (mAmbientIndicationContainer != null) {
             ((AmbientIndicationContainer) mAmbientIndicationContainer).initializeView(this);
+		mAmbientIndicationContainer.setVisibility(View.GONE);
         }
 
         // Initialize handler and runnable
@@ -4661,9 +4662,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 mKeyguardUserSwitcher.setKeyguard(true, fromShadeLocked);
             }
             if (mStatusBarView != null) mStatusBarView.removePendingHideExpandedRunnables();
-            if (mAmbientIndicationContainer != null && mRecognitionEnabled && mRecognitionEnabledOnKeyguard) {
-                showAmbientPlayIndication();
-            }
+            
         } else {
             mKeyguardIndicationController.setVisible(false);
             if (mKeyguardUserSwitcher != null) {
@@ -4672,7 +4671,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                         mState == StatusBarState.SHADE_LOCKED ||
                         fromShadeLocked);
             }
-            hideAmbientPlayIndication(0, false);
+            if (mAmbientIndicationContainer != null && mRecognitionEnabled && mRecognitionEnabledOnKeyguard) {
+                hideAmbientPlayIndication(0, false);
+            }
         }
         mNotificationPanel.setBarState(mState, mKeyguardFadingAway, goingToFullShade);
         updateTheme();
