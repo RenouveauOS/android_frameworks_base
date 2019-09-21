@@ -34,6 +34,9 @@
         android:layout_gravity="bottom|center_horizontal"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
+      
+      <include layout="@layout/ambient_indication"
+       android:id="@+id/ambient_indication_container" />
 
         <frameworks.support.lottie.LottieAnimationView
             android:id="@+id/charging_indication"
