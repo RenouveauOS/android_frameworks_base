@@ -615,6 +615,9 @@
 
     <!-- Font service -->
     <protected-broadcast android:name="com.android.server.ACTION_FONT_CHANGED" />
+    
+    <!-- Ambient Indication -->
+    <protected-broadcast android:name="com.android.internal.util.custom.ambient.play.AMBIENT_PLAY_SONG_MATCH" />
 
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
